@@ -24,6 +24,7 @@ var vsprintf = require('sprintf').vsprintf,
 var i18n = exports;
 
 i18n.version = '0.5.0';
+i18n.locales = locales;
 
 i18n.configure = function i18nConfigure(opt) {
 
@@ -39,7 +40,7 @@ i18n.configure = function i18nConfigure(opt) {
   directory = (typeof opt.directory === 'string') ? opt.directory : __dirname + pathsep + 'locales';
 
   // write new locale information to disk
-  updateFiles = (typeof opt.updateFiles === 'boolean') ? opt.updateFiles : true;
+  updateFiles = (typeof opt.updateFiles === 'boolean') ? opt.updateFiles : false;
 
   // what to use as the indentation unit (ex: "\t", "  ")
   indent = (typeof opt.indent === 'string') ? opt.indent : "\t";
@@ -57,11 +58,11 @@ i18n.configure = function i18nConfigure(opt) {
   objectNotation = (typeof opt.objectNotation === 'boolean') ? opt.objectNotation : false;
 
   // implicitly read all locales
-  if (typeof opt.locales === 'object') {
-    opt.locales.forEach(function (l) {
-      read(l);
-    });
-  }
+  //if (typeof opt.locales === 'object') {
+  //  opt.locales.forEach(function (l) {
+  //    read(l);
+  //  });
+  //}
 };
 
 i18n.init = function i18nInit(request, response, next) {
